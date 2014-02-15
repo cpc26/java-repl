@@ -3,7 +3,7 @@
 ;; Copyright 2014 Colin Carr
 ;;
 ;; Author: colinpcarr@member.fsf.org
-;; Time-stamp: <2014-02-14 20:50:32 cpc26>
+;; Time-stamp: <2014-02-14 22:48:10 cpc26>
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 ;;   (require 'jav-repl)
 
 ;
-; CUSTOM  - 
+; CUSTOM  -
 (defgroup java-repl nil
   "Major mode for java-repl"
   :group 'languages)
@@ -36,24 +36,24 @@
   "The 'java-repl' command.  Invoke the 'java-repl' via a wrapper that execs.
 #!/usr/bin/env bash
 exec /usr/bin/java -jar $JAVAREPLPATH/bin/java-repl.jarlocalhost:java-repl
-JAVAREPLPATH is installed directory.  
+JAVAREPLPATH is installed directory.
 Customize this variable to point to the wrapper script."
   :type 'string
   :group 'java-repl)
 
 ;;; Code:
 (defvar java-repl-file-path "/Users/cpc26/opt/java_repl/bin/java-repl"
-  "Path to the program used by `run-java-repl'")
+  "Path to the program used by `run-java-repl'.")
 ;
 (defvar java-repl-cli-arguments '()
-  "Commandline arguments to pass to `java-repl-cli'")
+  "Commandline arguments to pass to `java-repl-cli'.")
 ;
 (defvar java-repl-mode-map
   (let ((map (nconc (make-sparse-keymap) comint-mode-map)))
     ;; example definition
     (define-key map "\t" 'completion-at-point)
     map)
-  "Basic mode map for `run-java-repl'")
+  "Basic mode map for `run-java-repl'.")
 ;
 (defvar java-repl-prompt-regexp "^\\(?:\\[[^@]+@[^@]+\\]\\)"
   "Prompt for `run-java-repl'.")
@@ -76,7 +76,7 @@ Customize this variable to point to the wrapper script."
              java-repl-program java-repl-cli-arguments)
       (java-repl-mode))))
 (defun java-repl--initialize ()
-  "Helper function to initialize java-repl"
+  "Helper function to initialize java-repl."
   (setq comint-process-echoes t)
   (setq comint-use-prompt-regexp t))
 ;
@@ -98,3 +98,7 @@ Customize this variable to point to the wrapper script."
 ;; this has to be done in a hook. grumble grumble.
 (add-hook 'java-repl-mode-hook 'java-repl--initialize)
 ;;;; END JAVA-REPL
+
+(provide 'java-repl)
+
+;;; java-repl.el ends here
