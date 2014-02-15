@@ -1,4 +1,47 @@
-; java-repl
+;;; java-repl --- Major mode for java-repl
+
+;; Copyright 2014 Colin Carr
+;;
+;; Author: colinpcarr@member.fsf.org
+;; Time-stamp: <2014-02-14 20:50:32 cpc26>
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program; if not, write to the Free Software
+;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+;;; Commentary:
+
+;;  This is  E N T E R P R I S E  Q U A L I T Y  repl work.
+
+;; Put this file into your load-path and the following into your ~/.emacs:
+;;   (require 'jav-repl)
+
+;
+; CUSTOM  - 
+(defgroup java-repl nil
+  "Major mode for java-repl"
+  :group 'languages)
+
+(defcustom java-repl-command "java-repl"
+  "The 'java-repl' command.  Invoke the 'java-repl' via a wrapper that execs.
+#!/usr/bin/env bash
+exec /usr/bin/java -jar $JAVAREPLPATH/bin/java-repl.jarlocalhost:java-repl
+JAVAREPLPATH is installed directory.  
+Customize this variable to point to the wrapper script."
+  :type 'string
+  :group 'java-repl)
+
+;;; Code:
 (defvar java-repl-file-path "/Users/cpc26/opt/java_repl/bin/java-repl"
   "Path to the program used by `run-java-repl'")
 ;
